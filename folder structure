@@ -1,0 +1,33 @@
+OmniLake/
+├── config/
+│   └── config.yaml                  # Centralized configuration (paths, symbols, quality rules)
+├── data_lake/                       # Local data lake simulation (excluded from Git via .gitignore)
+│   ├── bronze/                      # Raw historical tick data (unmodified CSV/JSON files)
+│   ├── silver/                      # Cleaned, deduplicated Parquet/Delta tables partitioned by date
+│   └── gold/                        # Aggregated OHLCV bars and VWAP metrics ready for analytics
+├── docs/
+│   ├── architecture_diagram.png     # System architecture and data flow diagram
+│   └── data_dictionary.md           # Schema definitions, data types, and financial metric formulas
+├── notebooks/
+│   └── data_exploration.ipynb       # Ad-hoc exploratory analysis and visual validation
+├── src/
+│   ├── __init__.py
+│   ├── utils/
+│   │   ├── config_loader.py         # Reads config.yaml and resolves local vs. Azure paths
+│   │   ├── spark_manager.py         # Initializes a standardized SparkSession across the team
+│   │   └── logger.py                # Centralized logging for pipeline execution and debugging
+│   ├── ingestion/
+│   │   ├── base_ingestor.py         # Abstract Base Class (ABC) defining the ingestion interface
+│   │   └── binance_ingestor.py      # Concrete implementation for fetching raw tick datasets
+│   ├── silver/
+│   │   └── tick_cleaner.py          # PySpark module for schema enforcement, deduplication, and timestamp parsing
+│   └── gold/
+│       └── bar_aggregator.py        # PySpark module for time-windowed OHLCV and VWAP calculations
+├── sql/
+│   └── create_gold_views.sql        # Synapse Serverless SQL external tables and analytical views
+├── tests/
+│   └── test_aggregations.py         # Unit tests verifying financial calculations and data quality rules
+├── main.py                          # Pipeline orchestrator running Bronze -> Silver -> Gold sequentially
+├── requirements.txt                 # Project dependencies (pyspark, pyyaml, requests, delta-spark)
+├── .gitignore                       # Prevents large data files, logs, and virtual environments from being pushed
+└── README.md                        # Project overview, architecture, setup instructions, and team credits
