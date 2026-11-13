@@ -1,0 +1,56 @@
+project:
+  name: "OmniLake-Quant-Pipeline"
+  environment: "local"  # 
+
+storage:
+  local:
+    bronze: "data_lake/bronze"
+    silver: "data_lake/silver"
+    gold: "data_lake/gold"
+  azure:
+    storage_account: "omnilakestorage"
+    bronze: "abfss://bronze@omnilakestorage.dfs.core.windows.net/"
+    silver: "abfss://silver@omnilakestorage.dfs.core.windows.net/"
+    gold: "abfss://gold@omnilakestorage.dfs.core.windows.net/"
+
+ingestion:
+  source: "binance_vision"
+  base_url: "https://data.binance.vision/data/spot/monthly/trades"
+  symbols:
+    - "BTCUSDT"
+    - "ETHUSDT"
+    - "SOLUSDT"
+  periods:
+    - "2026-09"
+    - "2026-10"
+  max_retries: 3
+
+silver_processing:
+  output_format: "parquet"  # 
+  partition_columns:
+    - "symbol"
+    - "trade_date"
+  quality_rules:
+    drop_null_ids: true
+    min_price: 0.000001
+    min_quantity: 0.000001
+
+gold_aggregations:
+  timeframes:
+    - "1 minute"
+    - "5 minutes"
+    - "1 hour"
+  metrics:
+    - "open"
+    - "high"
+    - "low"
+    - "close"
+    - "volume"
+    - "vwap"
+    - "trade_count"
+
+spark:
+  app_name: "OmniLake-Market-Microstructure"
+  master: "local[*]"
+  shuffle_partitions: 8
+  driver_memory: "4g"
