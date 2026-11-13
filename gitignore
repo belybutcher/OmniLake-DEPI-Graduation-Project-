@@ -1,0 +1,16 @@
+data_lake/bronze/*
+data_lake/silver/*
+data_lake/gold/*
+!data_lake/bronze/.gitkeep
+!data_lake/silver/.gitkeep
+!data_lake/gold/.gitkeep
+
+
+venv/
+.env
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+spark-warehouse/
+metastore_db/
+*.log
