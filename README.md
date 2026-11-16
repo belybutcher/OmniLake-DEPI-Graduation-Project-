@@ -18,8 +18,6 @@ Using the **Medallion Architecture**, this pipeline ingests operational datasets
 
 ## Architecture & Data Flow
 
-*(Insert your Architecture Diagram Image Here: `![Architecture Diagram](images/architecture.png)`)*
-
 The pipeline follows a strict **Medallion Architecture** organized within Azure Data Lake Storage Gen2 (ADLS Gen2):
 1. **Bronze Zone (Raw):** Landing area for raw CSV and JSON datasets from operational systems.
 2. **Silver Zone (Processed):** Data is cleaned, standardized, and validated using PySpark. Duplicates and nulls are handled, and data is converted to highly compressed **Parquet/Delta** formats.
