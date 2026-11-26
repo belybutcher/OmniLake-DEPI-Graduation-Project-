@@ -1,5 +1,3 @@
-mkdir -p config gold
-cat << 'EOF' > config/symbols.yaml
 symbols:
   - symbol: BTCUSDT
     base_asset: BTC
@@ -13,4 +11,3 @@ symbols:
     base_asset: BNB
     quote_asset: USDT
     market_type: spot
-EOF
