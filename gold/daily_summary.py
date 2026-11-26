@@ -1,4 +1,3 @@
-cat << 'EOF' > gold/daily_summary.py
 from pathlib import Path
 from pyspark.sql import DataFrame, SparkSession
 from pyspark.sql import functions as F
@@ -78,4 +77,3 @@ def write_daily_summary(
         .partitionBy("date")
         .parquet(out_path)
     )
-EOF

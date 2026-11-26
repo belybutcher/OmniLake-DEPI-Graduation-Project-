@@ -1,4 +1,3 @@
-cat << 'EOF' > gold/unified_views.py
 from pathlib import Path
 from pyspark.sql import DataFrame, SparkSession
 from pyspark.sql import functions as F
@@ -63,4 +62,3 @@ def write_unified_ohlcv(
         .partitionBy("date")
         .parquet(out_path)
     )
-EOF

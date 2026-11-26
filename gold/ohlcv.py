@@ -1,4 +1,3 @@
-cat << 'EOF' > gold/ohlcv.py
 from pathlib import Path
 from pyspark.sql import DataFrame, SparkSession, Window
 from pyspark.sql import functions as F
@@ -129,4 +128,3 @@ def write_ohlcv(
         .partitionBy("date")
         .parquet(out_path)
     )
-EOF

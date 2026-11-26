@@ -1,4 +1,3 @@
-cat << 'EOF' > gold/quality.py
 from pyspark.sql import DataFrame
 from pyspark.sql import functions as F
 
@@ -61,4 +60,3 @@ def validate_gold(df: DataFrame, table_name: str) -> None:
         raise ValueError(
             f"[{table_name}] Quality gate failed: {stats['vwap_out_of_bounds']} rows have vwap outside [low, high]."
         )
-EOF
