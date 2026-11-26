@@ -1,0 +1,15 @@
+
+# Data Lake, virtual env & checkpoints
+data_lake/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# Virtual environment & local data lake
+.venv/
+data_lake/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
