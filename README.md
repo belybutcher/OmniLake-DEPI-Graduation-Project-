@@ -9,7 +9,7 @@
 * **Belal Salah Yaseen** (Team Leader)
 * **Samia Youssef Abdelrahman**
 * **Mohamed Kamal Gomaa**
-* **Youssef Emad Alsaadney**
+
 
 ## Project Overview
 **OmniLake** is an end-to-end cloud data platform built on Microsoft Azure. The project solves a common enterprise challenge: transforming fragmented, raw retail data (CSV, JSON) into a scalable, highly structured analytical environment. 
